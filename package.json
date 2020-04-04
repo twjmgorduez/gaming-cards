@@ -1,0 +1,19 @@
+{
+  "name": "gaming-cards",
+  "version": "1.0.0",
+  "description": "Back end Gaming cards",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/twjmgorduez/gaming-cards.git"
+  },
+  "author": "@twjmgorduez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/twjmgorduez/gaming-cards/issues"
+  },
+  "homepage": "https://github.com/twjmgorduez/gaming-cards#readme"
+}
