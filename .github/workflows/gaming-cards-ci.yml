@@ -29,17 +29,3 @@ jobs:
     - run: npm test
       env:
         CI: true
-
-  slackNotification:
-
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo ::set-env name=pull_number::$(jq — raw-output .pull_request.number $GITHUB_EVENT_PATH)
-      - name: Slack Notification
-        uses: rtCamp/action-slack-notify@master
-        env:
-          SLACK_CHANNEL: #card-games-delivery
-          SLACK_MESSAGE: ‘Please review on https://github.com/twjmgorduez/gaming-cards/pull/${{ env.pull_number}}’
-          SLACK_TITLE: ‘Pull request’
-          SLACK_USERNAME: ‘Gittan’
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
