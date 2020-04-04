@@ -23,8 +23,8 @@
   },
   "homepage": "https://github.com/twjmgorduez/gaming-cards#readme",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-node8": "^1.2.0",
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
     "chai": "^4.2.0",
     "debug": "^4.1.1",
     "express": "^4.17.1",
@@ -62,7 +62,6 @@
     }
   },
   "dependencies": {
-    "babel": "^6.23.0",
     "express": "^4.16.4"
   }
 }
