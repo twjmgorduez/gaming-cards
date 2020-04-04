@@ -16,7 +16,8 @@
   },
   "pre-commit": [
     "eslint-src",
-    "eslint-tests"
+    "eslint-tests",
+    "test"
   ],
   "repository": {
     "type": "git",
