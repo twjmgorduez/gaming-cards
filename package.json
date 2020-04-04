@@ -4,7 +4,7 @@
   "description": "Back end Gaming cards",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,14 @@
   },
   "homepage": "https://github.com/twjmgorduez/gaming-cards#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "babel-cli": "^6.26.0",
+    "babel-preset-node": "^5.1.1",
+    "babel-preset-node8": "^1.2.0",
+    "chai": "^4.2.0",
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "mocha": "^7.1.1",
+    "nodemon": "^2.0.2",
+    "supertest": "^4.0.2"
   }
 }
