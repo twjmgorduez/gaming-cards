@@ -22,7 +22,7 @@
     "url": "https://github.com/twjmgorduez/gaming-cards/issues"
   },
   "homepage": "https://github.com/twjmgorduez/gaming-cards#readme",
-  "debDependencies": {
+  "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-node8": "^1.2.0",
     "chai": "^4.2.0",
@@ -62,6 +62,7 @@
     }
   },
   "dependencies": {
+    "babel": "^6.23.0",
     "express": "^4.16.4"
   }
 }
