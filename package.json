@@ -1,6 +1,6 @@
 {
   "name": "gaming-cards",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Back-end Gaming cards",
   "main": "index.js",
   "scripts": {
@@ -10,8 +10,14 @@
     "dev": "DEBUG=server:debug NODE_ENV=development nodemon src/index.js --exec babel-node",
     "test": "DEBUG=server:debug NODE_ENV=test mocha --require babel-core/register --reporter spec --exit   tests/ --exec babel-node",
     "test:watch": "DEBUG=server:debug NODE_ENV=development mocha  --require babel-core/register --watch --reporter  spec   tests/ --exec babel-node",
-    "eslint": "eslint src/**/*.js --ignore-pattern \"node_modules/\""
+    "eslint-src": "eslint src/**/*.js --ignore-pattern \"node_modules/\"",
+    "eslint-tests": "eslint tests/**/*.js --ignore-pattern \"node_modules/\"",
+    "validate": "npm ls"
   },
+  "pre-commit": [
+    "eslint-src",
+    "eslint-tests"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/twjmgorduez/gaming-cards.git"
@@ -26,9 +32,18 @@
     "@babel/core": "^7.9.0",
     "@babel/node": "^7.8.7",
     "babel-cli": "^6.26.0",
+    "babel-eslint": "^10.1.0",
     "babel-preset-node": "^5.1.1",
     "chai": "^4.2.0",
     "debug": "^4.1.1",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsdoc": "^22.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
     "express": "^4.17.1",
     "mocha": "^7.1.1",
     "nodemon": "^2.0.2",
@@ -64,6 +79,7 @@
     }
   },
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "precommit-hook": "^3.0.0"
   }
 }

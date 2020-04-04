@@ -1,1 +1,1 @@
-console.log('Hello world')
+export const add = (a, b) => a + b
