@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { add } from '../src/app'
+import { add } from '../src/index'
 
 describe('Adding 2 numbers', () => { 
     it('should return 3 given 1 and 2', () => {
