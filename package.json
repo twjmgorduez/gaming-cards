@@ -12,7 +12,7 @@
     "test:watch": "DEBUG=server:debug NODE_ENV=development mocha  --require babel-core/register --watch --reporter  spec   tests/ --exec babel-node",
     "eslint-src": "eslint src/**/*.js --ignore-pattern \"node_modules/\"",
     "eslint-tests": "eslint tests/**/*.js --ignore-pattern \"node_modules/\"",
-    "validate": "npm ls",
+    "validate": "npm ls"
   },
   "pre-commit": [
     "eslint-src",
