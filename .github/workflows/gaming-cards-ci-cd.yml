@@ -28,21 +28,21 @@ jobs:
       env:
         CI: true
 
-deploy:
-  
-  needs: [test]
-  runs-on: ubuntu-latest
+  deploy:
+    
+    needs: [test]
+    runs-on: ubuntu-latest
 
-  steps:
-  - name: SSH and deploy node app
-    uses: appleboy/ssh-action@master
-    with:
-      host: ${{ secrets.SSH_HOST }}
-      username: ${{ secrets.SSH_USERNAME }}
-      key: ${{ secrets.SSH_KEY }}
-      port: ${{ secrets.SSH_PORT }}
-      script: |
-        cd ~/gaming-cards
-        git pull origin develop
-        npm run build --if-present
-        npm run pm2 restart default
+    steps:
+    - name: SSH and deploy node app
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        script: |
+          cd ~/gaming-cards
+          git pull origin develop
+          npm run build --if-present
+          npm run pm2 restart default
