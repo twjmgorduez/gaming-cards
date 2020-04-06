@@ -8,6 +8,6 @@ describe('Adding 2 numbers', () => {
 
         const sum = add(1, 2)
 
-        expect(sum).to.equals(sumExpected)
+        expect(sum).to.equals(sumExpected) 
     })
 })
