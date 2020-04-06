@@ -1,0 +1,43 @@
+
+name: Pull resquest checker
+
+on:
+  pull_request:
+    branches: [ master, develop ]
+
+jobs:
+  pull request checker:
+    name: Pull request checker
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x]
+
+    steps:
+    - name: Code checkout
+      uses: actions/checkout@v2
+
+    - name: Setup Node environment
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: NPM ci
+      run: |
+        npm ci
+
+    - name: NPM build, test  
+      run: |
+        npm run build --if-present
+
+    - name: Code review  
+      run: |
+        npm run eslint-src
+        npm run eslint-tests  
+
+    - name: Running unit tests  
+      run: |
+        npm test    
+      env:
+        CI: true
