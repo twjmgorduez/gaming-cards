@@ -4,6 +4,8 @@ name: Deploy to develop
 on:
   push:
     branches: develop
+  merge:
+    branches: develop
 
 jobs:
   deploy_to_develop_checker:
