@@ -1,7 +1,8 @@
 
 name: Deploy to develop
 
-push:
+on:
+  push:
     branches: develop
 
 jobs:
