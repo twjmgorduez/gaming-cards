@@ -2,7 +2,7 @@
 name: Deploy to develop
 
 on:
-  pull_request_review:
+  push:
     branches: develop
 
 jobs:
