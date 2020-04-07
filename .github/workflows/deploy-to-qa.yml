@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy_to_QA_checker:
-    name: Deploy to develop checker
+    name: Deploy to QA checker
     runs-on: ubuntu-latest
 
     strategy:
