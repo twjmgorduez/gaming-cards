@@ -27,7 +27,7 @@
   },
 
   "rules": {
-    "camelcase": "error",
+    "camelcase": "off",
     "consistent-return": "off",
     "curly": ["error", "multi-line"],
     "linebreak-style": ["error", "unix"],
