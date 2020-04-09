@@ -1,12 +1,14 @@
-import request from 'supertest'
 import app from '../src/index'
+import supertest from 'supertest'
+
+const request = supertest(app)
 
 describe('Product gallery', () => { 
     it('should return all of products', (done) => {
         
         const products_expected = '["Card 1","Card 2","Card 3"]'
 
-        request(app)
+        request
             .get('/show-gallery')
             .set('Accept', 'application/json')
             .expect('Content-Type', /json/)
@@ -18,7 +20,7 @@ describe('Product gallery', () => {
         
         const product_expected = "Card 1"
 
-        request(app)
+        request
             .get('/show-product/Card 1')
             .set('Accept', 'application/json')
             .expect('Content-Type', /json/)

@@ -8,8 +8,8 @@
     "serve": "NODE_ENV=production node dist/index.js",
     "start": "NODE_ENV=development babel-node src/index.js",
     "dev": "DEBUG=server:debug NODE_ENV=development nodemon --exec babel-node src/index.js",
-    "test": "DEBUG=server:debug NODE_ENV=test nyc mocha --require babel-core/register --reporter spec --exit   tests/ --exec babel-node",
-    "test:watch": "DEBUG=server:debug NODE_ENV=test mocha  --require babel-core/register --watch --reporter  spec   tests/ --exec babel-node",
+    "test": "DEBUG=server:debug NODE_ENV=test nyc mocha --require @babel/register --reporter spec --exit   tests/ --exec babel-node",
+    "test:watch": "DEBUG=server:debug NODE_ENV=test mocha  --require @babel/register --watch --reporter  spec   tests/ --exec babel-node",
     "eslint-src": "eslint src/**/*.js --ignore-pattern \"node_modules/\"",
     "eslint-tests": "eslint tests/**/*.js --ignore-pattern \"node_modules/\"",
     "validate": "npm ls",
@@ -31,12 +31,11 @@
   },
   "homepage": "https://github.com/twjmgorduez/gaming-cards#readme",
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
     "@babel/node": "^7.8.7",
     "@babel/preset-env": "^7.9.5",
-    "babel-cli": "^6.26.0",
-    "babel-eslint": "^10.1.0",
-    "babel-preset-node": "^5.1.1",
-    "babel/core": "^7.9.0",
+    "@babel/register": "^7.9.0",
     "chai": "^4.2.0",
     "debug": "^4.1.1",
     "eslint": "^6.8.0",
@@ -47,16 +46,10 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "express": "^4.17.1",
     "mocha": "^7.1.1",
     "nodemon": "^2.0.2",
     "nyc": "^15.0.1",
     "supertest": "^4.0.2"
-  },
-  "babel": {
-    "presets": [
-      "node"
-    ]
   },
   "engines": {
     "node": ">=8"
@@ -84,6 +77,7 @@
   },
   "dependencies": {
     "express": "^4.16.4",
+    "mongoose": "^5.9.7",
     "precommit-hook": "^3.0.0"
   }
 }
