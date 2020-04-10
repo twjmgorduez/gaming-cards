@@ -51,7 +51,7 @@ jobs:
     - name: Code checkout
       uses: actions/checkout@v2
     
-    - name: Upload app images to registry
+    - name: Upload app images to the registry
       uses: mr-smithers-excellent/docker-build-push@v2
       with:
         image: jmgorduez/gaming-cards
@@ -70,4 +70,4 @@ jobs:
 
     - name: Copy files to S3 with the AWS CLI
       run: |
-        aws s3 sync . s3://my-s3-website-bucket
+        aws s3 sync . s3://my-s3-website-bucket 
