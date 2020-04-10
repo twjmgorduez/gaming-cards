@@ -77,7 +77,7 @@ jobs:
     - name: Deploy to AWS
       uses: appleboy/ssh-action@master
         env:
-          USERNAME: ubutu
+          USERNAME: unbutu
           HOST: ec2-18-224-213-35.us-east-2.compute.amazonaws.com
           SCRIPT: docker --version
           KEY: ${{ secrets.EC2 }}
