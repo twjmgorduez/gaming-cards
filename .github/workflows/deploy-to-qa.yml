@@ -79,5 +79,5 @@ jobs:
         env:
           USERNAME: ubutu
           HOST: ec2-18-224-213-35.us-east-2.compute.amazonaws.com
-          SCRIPT: ls
+          SCRIPT: docker --version
           KEY: ${{ secrets.EC2 }}
