@@ -75,4 +75,4 @@ jobs:
         key: ${{ secrets.EC2 }}
         port: 22
         script: |
-          ls -al
+          docker rmi -f $(docker images -q)
