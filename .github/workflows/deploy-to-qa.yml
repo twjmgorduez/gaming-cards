@@ -62,12 +62,11 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Configure AWS credentials
-      env:
-        DEPLOY_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      run: |
-        eval `ssh-agent`
-        ssh-add - <<< "${DEPLOY_KEY}"
-        ssh ubuntu@ec2-3-22-63-224.us-east-2.compute.amazonaws.com
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-2
 
     - name: Copy files to S3 with the AWS CLI
       run: |
