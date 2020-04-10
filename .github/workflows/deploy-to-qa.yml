@@ -54,7 +54,8 @@ jobs:
     - name: Upload app images to registry
       uses: mr-smithers-excellent/docker-build-push@v2
       with:
-        image: gaming-cards/product-gallery-manager
+        image: jmgorduez/gaming-cards
+        tag: deploy-to-qa
         registry: docker.io
         dockerfile: deploy-Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
