@@ -78,5 +78,12 @@ jobs:
         port: 22
         envs: TAG
         script: |
-          sudo docker system prune -a
+          sudo docker system prune -a yes
           sudo docker run -d -p 8080:8080 --name gallery "jmgorduez/product-gallery-manager:${TAG}" 
+      
+    - name: Slack Notification
+      uses: bryan-nice/slack-notification@master
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_TITLE: 'Deployment finished!!!'
+        SLACK_MESSAGE: 'Deployment to QA have finished successfully'
