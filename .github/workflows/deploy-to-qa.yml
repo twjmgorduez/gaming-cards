@@ -52,7 +52,7 @@ jobs:
       uses: actions/checkout@v2
     
     - name: Upload app images to registry
-      - uses: mr-smithers-excellent/docker-build-push@v2
+      uses: mr-smithers-excellent/docker-build-push@v2
       with:
         image: gaming-cards/product-gallery-manager-qa
         registry: docker.io
