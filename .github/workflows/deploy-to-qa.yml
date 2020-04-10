@@ -67,13 +67,6 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-2
-
     - name: Deploy app to AWS
       uses: appleboy/ssh-action@master
       with:
@@ -82,4 +75,4 @@ jobs:
         key: ${{ secrets.EC2 }}
         port: 22
         script: |
-          ls -al
+          docker rmi -f $(docker images -q)
