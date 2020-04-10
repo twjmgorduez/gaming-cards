@@ -76,6 +76,7 @@ jobs:
         username: ubuntu
         key: ${{ secrets.EC2 }}
         port: 22
+        envs: TAG
         script: |
           sudo docker system prune -a
-          sudo docker run "jmgorduez/product-gallery-manager:$TAG"
+          sudo docker run "jmgorduez/product-gallery-manager:${TAG}"
