@@ -75,9 +75,5 @@ jobs:
         aws-region: us-east-2
 
     - name: Deploy app to AWS
-      env:
-        DEPLOY_KEY: ${{ secrets.EC2 }}
       run: |
-        eval `ssh-agent`
-        ssh-add - <<< "${DEPLOY_KEY}"
-        sudo ssh ubuntu@ec2-18-224-213-35.us-east-2.compute.amazonaws.com
+        ssh -i pem-file/ubuntu-EC2.pem ubuntu@ec2-18-224-213-35.us-east-2.compute.amazonaws.com
