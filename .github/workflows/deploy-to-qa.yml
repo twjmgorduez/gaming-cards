@@ -10,6 +10,12 @@ jobs:
     name: Deploy to QA checker
     runs-on: ubuntu-latest
 
+    services:
+      mongo:
+        image: mongo
+        ports:
+          - 27017:27017
+
     strategy:
       matrix:
         node-version: [8.x, 10.x, 12.x]
@@ -55,7 +61,7 @@ jobs:
       uses: mr-smithers-excellent/docker-build-push@v2
       with:
         image: jmgorduez/product-gallery-manager
-        tag: deploy-to-qa
+        tag: git
         registry: docker.io
         dockerfile: deploy-app-Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
@@ -68,10 +74,10 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-2
 
-    - name: Connect to AWS
+    - name: Deploy app to AWS
       env:
         DEPLOY_KEY: ${{ secrets.EC2 }}
       run: |
         eval `ssh-agent`
         ssh-add - <<< "${DEPLOY_KEY}"
-        ssh ec2-user@ec2-instance-ip-here.us-east-2.compute.amazonaws.com 
+        ssh ec2-user@ec2-instance-ip-here.us-east-2.compute.amazonaws.com

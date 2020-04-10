@@ -6,7 +6,7 @@ const request = supertest(app)
 describe('Product gallery', () => { 
     it('should return all of products', (done) => {
         
-        const products_expected = '["Card 1","Card 2","Card 3"]'
+        const products_expected = '["Card 1","Card 2","Card 3","Card 4"]'
 
         request
             .get('/show-gallery')
