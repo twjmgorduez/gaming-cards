@@ -57,7 +57,7 @@ jobs:
         image: jmgorduez/gaming-cards
         tag: deploy-to-qa
         registry: docker.io
-        dockerfile: deploy-Dockerfile
+        dockerfile: deploy-to-qa-Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
