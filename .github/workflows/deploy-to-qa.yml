@@ -75,7 +75,7 @@ jobs:
         key: ${{ secrets.EC2 }}
         port: 22
         envs: 
-          -TAG: ${GITHUB_SHA}
+          - TAG: ${GITHUB_SHA}
         script: |
           sudo docker system prune -a
           sudo docker run "jmgorduez/product-gallery-manager:${TAG}"
