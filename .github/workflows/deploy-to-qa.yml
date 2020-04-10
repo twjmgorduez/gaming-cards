@@ -75,4 +75,5 @@ jobs:
         key: ${{ secrets.EC2 }}
         port: 22
         script: |
-          docker system prune -a
+          sudo docker system prune -a
+          sudo docker run jmgorduez/product-gallery-manager:${GITHUB_SHA}
