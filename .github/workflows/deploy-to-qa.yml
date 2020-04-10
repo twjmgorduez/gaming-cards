@@ -75,4 +75,4 @@ jobs:
         key: ${{ secrets.EC2 }}
         port: 22
         script: |
-          docker rmi -f $(docker images -q)
+          docker system prune -a
