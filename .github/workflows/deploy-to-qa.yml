@@ -75,9 +75,11 @@ jobs:
         aws-region: us-east-2
 
     - name: Deploy app to AWS
-      env:
-        DEPLOY_KEY: ${{ secrets.EC2 }}
-      run: |
-        eval `ssh-agent`
-        ssh-add - <<< "${DEPLOY_KEY}"
-        ssh -tt ubuntu@ec2-18-224-213-35.us-east-2.compute.amazonaws.com
+      uses: appleboy/ssh-action@master
+      with:
+        host: ec2-18-224-213-35.us-east-2.compute.amazonaws.com
+        username: ubuntu
+        key: ${{ secrets.EC2 }}
+        port: 22
+        script: |
+          ls -al
