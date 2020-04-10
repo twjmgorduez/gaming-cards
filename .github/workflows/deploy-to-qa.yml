@@ -61,7 +61,7 @@ jobs:
       uses: mr-smithers-excellent/docker-build-push@v2
       with:
         image: jmgorduez/product-gallery-manager
-        tag: deploy-to-qa
+        tag: ${GITHUB_SHA}
         registry: docker.io
         dockerfile: deploy-app-Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
