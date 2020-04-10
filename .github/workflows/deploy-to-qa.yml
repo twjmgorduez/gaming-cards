@@ -61,7 +61,7 @@ jobs:
       uses: mr-smithers-excellent/docker-build-push@v2
       with:
         image: jmgorduez/product-gallery-manager
-        tag: ${GITHUB_SHA}
+        tag: ${{ github.sha }}
         registry: docker.io
         dockerfile: deploy-app-Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
@@ -69,13 +69,13 @@ jobs:
 
     - name: Deploy app to AWS
       uses: appleboy/ssh-action@master
+      env: 
+        TAG: ${{ github.sha }}
       with:
         host: ec2-18-224-213-35.us-east-2.compute.amazonaws.com
         username: ubuntu
         key: ${{ secrets.EC2 }}
         port: 22
-        env: 
-          TAG: ${{GITHUB_SHA}}
         script: |
           sudo docker system prune -a
-          sudo docker run "jmgorduez/product-gallery-manager:${TAG}"
+          sudo docker run "jmgorduez/product-gallery-manager:$TAG"
