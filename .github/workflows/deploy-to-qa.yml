@@ -79,4 +79,4 @@ jobs:
         envs: TAG
         script: |
           sudo docker system prune -a
-          sudo docker run "jmgorduez/product-gallery-manager:${TAG}"
+          sudo docker run "jmgorduez/product-gallery-manager:${TAG}" -p 8080:8080
