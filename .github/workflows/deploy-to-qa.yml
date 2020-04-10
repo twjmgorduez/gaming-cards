@@ -57,7 +57,7 @@ jobs:
         image: jmgorduez/product-gallery-manager
         tag: deploy-to-qa
         registry: docker.io
-        dockerfile: deploy-app-to-qa-Dockerfile
+        dockerfile: deploy-app-Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
