@@ -1,8 +1,0 @@
-version: "2"
-services:
-    gallery-db-it:
-        build:
-            context: .
-            dockerfile: integration-test-Dockerfile
-        ports:
-        - "27017:27017"
