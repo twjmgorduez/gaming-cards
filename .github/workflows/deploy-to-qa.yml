@@ -65,7 +65,7 @@ jobs:
       env:
         DEPLOY_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       run: |
-        ${ DEPLOY_KEY }
+        ${DEPLOY_KEY}
         eval `ssh-agent`
         ssh-add - <<< "${ DEPLOY_KEY }"
         ssh ubuntu@ec2-3-22-63-224.us-east-2.compute.amazonaws.com
