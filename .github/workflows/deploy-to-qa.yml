@@ -79,6 +79,7 @@ jobs:
         envs: TAG
         script: |
           sudo docker system prune -a
+        script: |
           sudo docker run -d -p 27017:27017 mongo
           sudo docker run -d -p 8080:8080 "jmgorduez/product-gallery-manager:${TAG}"
       
