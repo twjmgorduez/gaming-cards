@@ -41,11 +41,7 @@ jobs:
         npm test    
       env:
         CI: true
-  
-  slack_notifier:
-    name: Slack notifier
-
-    steps:
+        
     - name: Slack Notification
       uses: sonots/slack-notice-action@v3
       with:
