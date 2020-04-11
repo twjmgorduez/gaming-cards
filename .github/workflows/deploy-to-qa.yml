@@ -72,8 +72,8 @@ jobs:
       env: 
         TAG: ${{ github.sha }}
       with:
-        host: ${{ secrets.AWS_SERVER }}
-        username: ${{ secrets.AWS_USER }}
+        host: ${{ secrets.AWS_SERVER_QA }}
+        username: ${{ secrets.AWS_USER_QA }}
         key: ${{ secrets.EC2 }}
         port: 22
         envs: TAG
