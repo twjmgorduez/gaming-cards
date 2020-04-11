@@ -48,7 +48,7 @@ jobs:
 
     - name: Running integration tests  
       run: |
-        npm test    
+        npm it    
       env:
         CI: true
 

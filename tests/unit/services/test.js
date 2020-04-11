@@ -1,7 +1,6 @@
-import should from 'chai'
 
-describe('Product gallery', () => { 
-    it('should return all of products', (done) => {
+describe('Unit test example', () => { 
+    it('should example', (done) => {
         done()
     })
 })
