@@ -7,48 +7,6 @@ on:
     branches: master
 
 jobs:
-  deploy_to_PROD_checker:
-    name: Deploy to PROD checker
-    runs-on: ubuntu-latest
-
-    services:
-      mongo:
-        image: mongo
-        ports:
-          - 27017:27017
-
-    strategy:
-      matrix:
-        node-version: [12.x]
-
-    steps:
-    - name: Code checkout
-      uses: actions/checkout@v2
-
-    - name: Setup Node environment
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-
-    - name: NPM ci
-      run: |
-        npm ci
-
-    - name: NPM build  
-      run: |
-        npm run build --if-present
-
-    - name: Code review  
-      run: |
-        npm run eslint-src
-        npm run eslint-tests  
-
-    - name: Running unit tests  
-      run: |
-        npm test    
-      env:
-        CI: true
-
   deploy:
     name: Upload to AWS PROD enviroment
     runs-on: ubuntu-latest
@@ -79,8 +37,9 @@ jobs:
         port: 22
         envs: TAG
         script: |
-          sudo docker rm -f $(sudo docker ps -a -q)
-          sudo docker rmi -f $(sudo docker images -q)
+          sudo docker rmi -f $(sudo docker images 'mong' -q)
+          sudo docker rmi -f $(sudo docker images 'jmgorduez/product-gallery-manager' -q)
+          
           sudo docker run -d -p 27017:27017 mongo
           sudo docker run -d -p 8080:8080 "jmgorduez/product-gallery-manager:${TAG}"
       
