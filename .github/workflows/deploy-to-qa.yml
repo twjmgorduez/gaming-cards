@@ -78,8 +78,8 @@ jobs:
         port: 22
         envs: TAG
         script: |
-          sudo docker system prune -a yes
-          sudo docker run -d --name gallery "jmgorduez/product-gallery-manager:${TAG}" 
+          sudo docker system prune -a
+          sudo docker run -d --name gallery -p 8080:8080 "jmgorduez/product-gallery-manager:${TAG}" 
       
     - name: Slack Notification
       uses: sonots/slack-notice-action@v3
@@ -87,4 +87,5 @@ jobs:
         status: ${{ job.status }}
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       if: always()  
