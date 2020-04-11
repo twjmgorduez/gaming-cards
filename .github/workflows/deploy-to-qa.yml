@@ -78,9 +78,9 @@ jobs:
         port: 22
         envs: TAG
         script: | 
-          sudo docker rm -f product-gallery
+          sudo docker rm -f -v product-gallery
           sudo docker rmi -f $(sudo docker images 'mongo' -q)
-          sudo docker rm -f product-gallery-manager
+          sudo docker rm -f -v product-gallery-manager
           sudo docker rmi -f $(sudo docker images 'jmgorduez/product-gallery-manager' -q)
           sudo docker run -d -p 27017:27017 --name product-gallery mongo
           sudo docker run -d -p 8080:8080 --name product-gallery-manager "jmgorduez/product-gallery-manager:${TAG}"
