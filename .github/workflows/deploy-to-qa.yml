@@ -78,8 +78,8 @@ jobs:
         port: 22
         envs: TAG
         script: |
-          sudo docker rm -f $(sudo docker ps -a -q)
-          sudo docker rmi -f $(sudo docker images -q)
+          sudo docker rmi -f $(sudo docker images 'mong' -q)
+          sudo docker rmi -f $(sudo docker images 'jmgorduez/product-gallery-manager' -q)
           sudo docker run -d -p 27017:27017 mongo
           sudo docker run -d -p 8080:8080 "jmgorduez/product-gallery-manager:${TAG}"
       
