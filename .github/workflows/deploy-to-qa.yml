@@ -18,7 +18,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [8.x, 10.x, 12.x]
+        node-version: [12.x]
 
     steps:
     - name: Code checkout
@@ -79,6 +79,7 @@ jobs:
         envs: TAG
         script: |
           sudo docker system prune -a
+          sudo docker run -d -p 27017:27017 mongo
           sudo docker run -d -p 8080:8080 "jmgorduez/product-gallery-manager:${TAG}"
       
     - name: Slack Notification
