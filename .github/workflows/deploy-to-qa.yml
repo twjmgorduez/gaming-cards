@@ -82,7 +82,7 @@ jobs:
           sudo docker run -d --name gallery "jmgorduez/product-gallery-manager:${TAG}" 
       
     - name: Slack Notification
-    - uses: sonots/slack-notice-action@v3
+      uses: sonots/slack-notice-action@v3
       with:
         status: ${{ job.status }}
       env:
