@@ -77,7 +77,7 @@ jobs:
         key: ${{ secrets.EC2 }}
         port: 22
         envs: TAG
-        script: |
+        script: | 
           sudo docker rm -f product-gallery
           sudo docker rmi -f $(sudo docker images 'mongo' -q)
           sudo docker rm -f product-gallery-manager
