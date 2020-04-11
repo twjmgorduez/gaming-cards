@@ -44,6 +44,7 @@ jobs:
 
     - name: Running unit tests  
       run: |
+        mongo --version
         npm test    
       env:
         CI: true
