@@ -79,7 +79,7 @@ jobs:
         envs: TAG
         script: |
           sudo docker system prune -a
-          sudo docker run -d -p 8080:8080 "jmgorduez/product-gallery-manager:${TAG}" 
+          sudo docker run -d -p 8080:8080 "jmgorduez/product-gallery-manager:${TAG}"
       
     - name: Slack Notification
       uses: sonots/slack-notice-action@v3
