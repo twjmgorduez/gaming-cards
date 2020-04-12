@@ -48,7 +48,6 @@ jobs:
 
     - name: Running integration tests  
       run: |
-        echo "$PRODUCT_GALLERY_DB_URL
         npm run it    
       env:
         PRODUCT_GALLERY_DB_URL: ${{ secrets.PRODUCT_GALLERY_DB_URL }}
