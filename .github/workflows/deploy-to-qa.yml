@@ -79,8 +79,9 @@ jobs:
         key: ${{ secrets.EC2 }}
         port: 22
         script: | 
-          mongo database-update/shema.jobs
-          mongo database-update/data.jobs
+          mongo 
+          load(database-update/shema.jobs)
+          load(database-update/data.jobs)
           
     - name: Upload app images to the registry
       uses: mr-smithers-excellent/docker-build-push@v2
