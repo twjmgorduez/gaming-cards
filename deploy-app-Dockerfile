@@ -1,3 +1,4 @@
+ARG PRODUCT_GALLERY_DB_URL
 FROM node:10
 
 # Create app directory
@@ -12,4 +13,5 @@ COPY .babelrc ./
 COPY src src/
 
 EXPOSE 8080
+RUN export PRODUCT_GALLERY_DB_URL=${PRODUCT_GALLERY_DB_URL}
 CMD [ "npm", "start" ] 
