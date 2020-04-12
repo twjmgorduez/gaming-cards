@@ -1,28 +1,11 @@
 import { Card } from "../../../src/dataaccess/entities/card"
 
-export const insertCards = () => {
+export const insertCards = (done) => {
 
-    Card.create({
-        _id: 1,
-        name: "Card 1"
-    })
-
-    Card.create({
-        _id: 2,
-        name: "Card 2"
-    })
-
-    Card.create({
-        _id: 3,
-        name: "Card 3"
-    })
-
-    Card.create({
-        _id: 4,
-        name: "Card 4"
-    })
+    const arr = [{_id: 1,name: "Card 1"},{_id: 2,name: "Card 2"},{_id: 3,name: "Card 3"},{_id: 4,name: "Card 4"}];
+    Card.insertMany(arr, done);
 }
 
-export const clearCardsColletion = () => {
-    Card.collection.deleteMany({})
+export const clearCardsColletion = (done) => {
+    Card.collection.deleteMany({}, done)
 }
