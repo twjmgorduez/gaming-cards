@@ -12,7 +12,7 @@ module.exports = function () {
 
         showProduct(id, done) {
         
-            return Card.findById(id, done)
+            return Card.findById(id, done) 
         }
     }
 }
