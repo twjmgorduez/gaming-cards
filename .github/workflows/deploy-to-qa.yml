@@ -47,13 +47,11 @@ jobs:
         npm test    
 
     - name: Running integration tests  
-      env:
-        PRODUCT_GALLERY_DB_URL: ${{ secrets.PRODUCT_GALLERY_DB_URL }}
       run: |
         export PRODUCT_GALLERY_DB_URL= $PRODUCT_GALLERY_DB_URL
         npm it    
       env:
-        CI: true
+        PRODUCT_GALLERY_DB_URL: ${{ secrets.PRODUCT_GALLERY_DB_URL }}
 
   deploy:
     name: Upload to AWS QA enviroment
