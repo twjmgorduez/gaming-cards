@@ -1,7 +1,7 @@
 
-"product-gallery".createCollection( "card")
+db.createCollection( "card")
 
-const cursor = "product-gallery".find();
+const cursor = db.find();
 while ( cursor.hasNext() ) {
    printjson( cursor.next() );
 }
