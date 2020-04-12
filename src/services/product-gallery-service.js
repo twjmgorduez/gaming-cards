@@ -7,7 +7,7 @@ module.exports = function () {
         showGallery(done) {
         
             const cardsResult = []
-            Card.find({},  done)
+            Card.find({},  done).sort("_id")
         },
 
         showProduct(id, done) {
