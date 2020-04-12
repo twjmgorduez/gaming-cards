@@ -40,6 +40,6 @@ describe('Product gallery', () => {
 
     afterEach((done) => {
         clearCardsColletion();
-        done()
+        done() 
     });
 })
