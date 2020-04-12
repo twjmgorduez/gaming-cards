@@ -105,11 +105,12 @@ jobs:
         username: ${{ secrets.AWS_USER_QA }}
         key: ${{ secrets.EC2 }}
         port: 22
-        envs: TAG,PRODUCT_GALLERY_DB_URL
+        envs: TAG
+        script_stop: true
         script: | 
           sudo docker rm -f -v product-gallery-manager
           sudo docker rmi -f $(sudo docker images 'jmgorduez/product-gallery-manager' -q)
-          echo "VAR $PRODUCT_GALLERY_DB_URL"
+          export PRODUCT_GALLERY_DB_URL=${PRODUCT_GALLERY_DB_URL}
           sudo docker run -d -p 8080:8080 --name product-gallery-manager "jmgorduez/product-gallery-manager:${TAG}"
       
     - name: Slack Notification
