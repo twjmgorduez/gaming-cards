@@ -1,9 +1,10 @@
 import express from 'express'
-import { show_gallery, show_product} from '../endpoints/product_gallery.js'
+const productGalleryService = require('../services/product-gallery-service')()
+const productGalleryController = require('../endpoints/product-gallery-controller')(productGalleryService)
 
 const router = express.Router();
 
-router.get("/show-gallery", show_gallery);
-router.get("/show-product/:name", show_product);
+router.get("/show-gallery", productGalleryController.showGallery);
+router.get("/show-product/:id", productGalleryController.showProduct);
 
 export default router

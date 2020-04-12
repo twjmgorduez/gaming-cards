@@ -1,30 +1,45 @@
 import app from '../../src/index'
 import supertest from 'supertest'
+import { Card } from "../../src/dataaccess/entities/card"
+import { insertCards, clearCardsColletion } from "./database-scripts/cards-collention";
+const should = require("chai").should()
 
 const request = supertest(app)
 
 describe('Product gallery', () => { 
+
+    beforeEach((done) => {
+        insertCards();
+        done()
+    });
+
     it('should return all of products', (done) => {
         
-        const products_expected = '["Card 1","Card 2","Card 3","Card 4"]'
+        // eslint-disable-next-line max-len
+        const productsExpected = '[{"_id":1,"name":"Card 1","__v":0},{"_id":2,"name":"Card 2","__v":0},{"_id":3,"name":"Card 3","__v":0},{"_id":4,"name":"Card 4","__v":0}]'
 
         request
             .get('/show-gallery')
             .set('Accept', 'application/json')
             .expect('Content-Type', /json/)
             .expect(200)
-            .expect(products_expected, done)
+            .expect(productsExpected, done)
     })
 
     it('should return Card 1 given Card 1', (done) => {
         
-        const product_expected = "Card 1"
+        const productExpected = '{"_id":1,"name":"Card 1","__v":0}'
 
         request
-            .get('/show-product/Card 1')
+            .get('/show-product/1')
             .set('Accept', 'application/json')
             .expect('Content-Type', /json/)
             .expect(200)
-            .expect(JSON.stringify(product_expected), done)
+            .expect(productExpected, done)
     })
+
+    afterEach((done) => {
+        clearCardsColletion();
+        done()
+    });
 })
