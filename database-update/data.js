@@ -1,1 +1,1 @@
-show collections;
+show collections

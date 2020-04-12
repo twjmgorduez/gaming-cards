@@ -80,8 +80,8 @@ jobs:
         port: 22
         script: | 
           mongo 
-          load('database-update/shema.js')
-          load('database-update/data.js')
+          load("database-update/shema.js")
+          load("database-update/data.js")
           
     - name: Upload app images to the registry
       uses: mr-smithers-excellent/docker-build-push@v2
