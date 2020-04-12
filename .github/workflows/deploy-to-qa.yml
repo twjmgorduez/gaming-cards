@@ -61,7 +61,27 @@ jobs:
     steps:
     - name: Code checkout
       uses: actions/checkout@v2
-    
+
+    - name: Copy mongo file update
+      uses: garygrossgarten/github-action-scp@release
+      with:
+        local: database-update/
+        remote: database-update/
+        host: ${{ secrets.AWS_SERVER_QA }}
+        username: ${{ secrets.AWS_USER_QA }}
+        privateKey: ${{ secrets.EC2 }}
+
+    - name: Run database update scripts
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.AWS_SERVER_QA }}
+        username: ${{ secrets.AWS_USER_QA }}
+        key: ${{ secrets.EC2 }}
+        port: 22
+        script: | 
+          mongo database-update/shema.jobs
+          mongo database-update/data.jobs
+          
     - name: Upload app images to the registry
       uses: mr-smithers-excellent/docker-build-push@v2
       with:
