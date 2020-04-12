@@ -73,15 +73,17 @@ jobs:
 
     - name: Run database update scripts
       uses: appleboy/ssh-action@master
+      env: 
+        PRODUCT_GALLERY_DB_URL: ${{ secrets.PRODUCT_GALLERY_DB_URL }}
       with:
         host: ${{ secrets.AWS_SERVER_QA }}
         username: ${{ secrets.AWS_USER_QA }}
         key: ${{ secrets.EC2 }}
         port: 22
+        envs: PRODUCT_GALLERY_DB_URL
         script: | 
-          mongo 
-          load("database-update/schema.js")
-          load("database-update/data.js")
+          mongo ${PRODUCT_GALLERY_DB_URL} database-update/schema.js
+          mongo ${PRODUCT_GALLERY_DB_URL} database-update/data.js
           
     - name: Upload app images to the registry
       uses: mr-smithers-excellent/docker-build-push@v2
