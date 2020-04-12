@@ -48,7 +48,7 @@ jobs:
 
     - name: Running integration tests  
       run: |
-        echo ${PRODUCT_GALLERY_DB_URL}
+        echo "$PRODUCT_GALLERY_DB_URL
         npm run it    
       env:
         PRODUCT_GALLERY_DB_URL: ${{ secrets.PRODUCT_GALLERY_DB_URL }}
@@ -110,8 +110,8 @@ jobs:
         script: | 
           sudo docker rm -f -v product-gallery-manager
           sudo docker rmi -f $(sudo docker images 'jmgorduez/product-gallery-manager' -q)
-          export PRODUCT_GALLERY_DB_URL=${PRODUCT_GALLERY_DB_URL}
-          echo ${PRODUCT_GALLERY_DB_URL}
+          export PRODUCT_GALLERY_DB_URL="$PRODUCT_GALLERY_DB_URL"
+          echo "$PRODUCT_GALLERY_DB_URL
           sudo docker run -d -p 8080:8080 --name product-gallery-manager "jmgorduez/product-gallery-manager:${TAG}"
       
     - name: Slack Notification
