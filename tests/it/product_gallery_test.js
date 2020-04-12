@@ -9,7 +9,7 @@ const request = supertest(app)
 describe('Product gallery', () => { 
 
     beforeEach((done) => {
-        insertCards(done);
+        insertCards(done); 
     });
 
     it('should return all of products', (done) => {
