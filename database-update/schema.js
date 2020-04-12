@@ -1,11 +1,5 @@
 
-"product-gallery".createCollection( "card",
-    {
-      _id: number,
-      name: string,
-      _v: number
-    }
- )
+"product-gallery".createCollection( "card")
 
 const cursor = "product-gallery".find();
 while ( cursor.hasNext() ) {
