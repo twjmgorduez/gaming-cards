@@ -99,13 +99,12 @@ jobs:
       uses: appleboy/ssh-action@master
       env: 
         TAG: ${{ github.sha }}
-        PRODUCT_GALLERY_DB_URL: ${{ secrets.PRODUCT_GALLERY_DB_URL }}
       with:
         host: ${{ secrets.AWS_SERVER_QA }}
         username: ${{ secrets.AWS_USER_QA }}
         key: ${{ secrets.EC2 }}
         port: 22
-        envs: TAG,${{ secrets.PRODUCT_GALLERY_DB_URL }}
+        envs: TAG
         script_stop: true
         script: | 
           sudo docker rm -f -v product-gallery-manager
