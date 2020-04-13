@@ -10,7 +10,7 @@ jobs:
     name: Deploy to QA checker
     runs-on: ubuntu-latest
 
-    services:
+    container:
       mongo:
         image: mongo
         ports:
@@ -50,7 +50,7 @@ jobs:
       run: |
         npm run it    
       env:
-        PRODUCT_GALLERY_DB_URL: ${{ secrets.PRODUCT_GALLERY_DB_URL }}
+        PRODUCT_GALLERY_DB_URL: ${{ secrets.PRODUCT_GALLERY_DB_URL_IT }}
 
   deploy:
     name: Upload to AWS QA enviroment
@@ -108,7 +108,7 @@ jobs:
         script: | 
           docker rm -f -v product-gallery-manager
           docker rmi -f $(sudo docker images 'jmgorduez/product-gallery-manager' -q)
-          docker run -d -p 8080:8080 --link product-gallery -e PRODUCT_GALLERY_DB_URL=${PRODUCT_GALLERY_DB_URL} --name product-gallery-manager "jmgorduez/product-gallery-manager:${TAG}"
+          docker run -d -p 8080:8080 --network product-gallery-network -e PRODUCT_GALLERY_DB_URL=${PRODUCT_GALLERY_DB_URL} --name product-gallery-manager "jmgorduez/product-gallery-manager:${TAG}"
       
     - name: Slack Notification
       uses: sonots/slack-notice-action@v3
