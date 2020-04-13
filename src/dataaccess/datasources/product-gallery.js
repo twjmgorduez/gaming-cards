@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 
 //"mongodb://<dbuser>:<dbpassword>@ds250607.mlab.com:38485/test-db"
-console.log(`PRODUCT_GALLERY_DB_URL=${process.env.PRODUCT_GALLERY_DB_URL}`)
 const PRODUCT_GALLERY_DB_URL = process.env.PRODUCT_GALLERY_DB_URL
 
 mongoose.connect(PRODUCT_GALLERY_DB_URL, {
