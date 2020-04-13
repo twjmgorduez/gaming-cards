@@ -10,7 +10,7 @@ jobs:
     name: Deploy to QA checker
     runs-on: ubuntu-latest
 
-    container:
+    service:
       mongo:
         image: mongo
         ports:
