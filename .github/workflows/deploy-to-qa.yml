@@ -61,7 +61,7 @@ jobs:
     - name: Code checkout
       uses: actions/checkout@v2
 
-    - name: Copy mongo file update
+    - name: Copy mongo scripts for update
       uses: garygrossgarten/github-action-scp@release
       with:
         local: database-update/

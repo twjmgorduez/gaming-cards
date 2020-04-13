@@ -1,2 +1,2 @@
 
-db.createCollection( "card")
+db.createCollection( "cards")
