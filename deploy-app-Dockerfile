@@ -1,4 +1,3 @@
-
 FROM node:10
 
 # Create app directory
@@ -13,5 +12,4 @@ COPY .babelrc ./
 COPY src src/
 
 EXPOSE 8080
-
 CMD [ "npm", "start" ] 
