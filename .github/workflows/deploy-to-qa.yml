@@ -93,23 +93,23 @@ jobs:
         dockerfile: deploy-app-Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        buildArgs: PRODUCT_GALLERY_DB_URL=1
 
     - name: Deploy app to AWS
       uses: appleboy/ssh-action@master
       env: 
-        TAG: ${{ github.sha }}
+        TAG: ${{ github.sha }}  
+        PRODUCT_GALLERY_DB_URL: ${{ secrets.PRODUCT_GALLERY_DB_URL }}
       with:
         host: ${{ secrets.AWS_SERVER_QA }}
         username: ${{ secrets.AWS_USER_QA }}
         key: ${{ secrets.EC2 }}
         port: 22
-        envs: TAG
+        envs: TAG,PRODUCT_GALLERY_DB_URL
         script_stop: true
         script: | 
           sudo docker rm -f -v product-gallery-manager
           sudo docker rmi -f $(sudo docker images 'jmgorduez/product-gallery-manager' -q)
-          sudo docker run -d -p 8080:8080 --name product-gallery-manager "jmgorduez/product-gallery-manager:${TAG}"
+          sudo docker run --env PRODUCT_GALLERY_DB_URL=${PRODUCT_GALLERY_DB_URL} -d -p 8080:8080 --name product-gallery-manager "jmgorduez/product-gallery-manager:${TAG}"
       
     - name: Slack Notification
       uses: sonots/slack-notice-action@v3
