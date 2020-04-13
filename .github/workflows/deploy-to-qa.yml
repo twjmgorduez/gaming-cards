@@ -93,7 +93,7 @@ jobs:
         dockerfile: deploy-app-Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        buildArgs: PRODUCT_GALLERY_DB_URL=${{ secrets.PRODUCT_GALLERY_DB_URL }}
+        buildArgs: PRODUCT_GALLERY_DB_URL=1
 
     - name: Deploy app to AWS
       uses: appleboy/ssh-action@master
