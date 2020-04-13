@@ -73,7 +73,7 @@ jobs:
     - name: Run database update scripts
       uses: appleboy/ssh-action@master
       env: 
-        PRODUCT_GALLERY_DB_URL: ${{ secrets.PRODUCT_GALLERY_DB_URL }}
+        PRODUCT_GALLERY_DB_URL: ${{ secrets.PRODUCT_GALLERY_DB_URL_IT }}
       with:
         host: ${{ secrets.AWS_SERVER_QA }}
         username: ${{ secrets.AWS_USER_QA }}
