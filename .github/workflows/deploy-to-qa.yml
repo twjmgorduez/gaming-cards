@@ -104,11 +104,10 @@ jobs:
         key: ${{ secrets.EC2 }}
         port: 22
         envs: TAG
-        script_stop: true
         script: | 
           sudo docker rm -f -v product-gallery-manager
           sudo docker rmi -f $(sudo docker images 'jmgorduez/product-gallery-manager' -q)
-          docker run -d -p 8080:8080 --name product-gallery-manager "jmgorduez/product-gallery-manager:${TAG}"
+          sudo docker run -d -p 8080:8080 --name product-gallery-manager "jmgorduez/product-gallery-manager:${TAG}"
       
     - name: Slack Notification
       uses: sonots/slack-notice-action@v3
