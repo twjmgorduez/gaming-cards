@@ -108,7 +108,7 @@ jobs:
         script: | 
           docker rm -f -v product-gallery-manager
           docker rmi -f $(sudo docker images 'jmgorduez/product-gallery-manager' -q)
-          docker run -d -expose ${PORT} -p ${PORT}:${PORT} --network product-gallery-network -e PRODUCT_GALLERY_DB_URL=${PRODUCT_GALLERY_DB_URL} -e PORT=${PORT} --name product-gallery-manager "jmgorduez/product-gallery-manager:${TAG}"
+          docker run -d -p ${PORT}:${PORT} --network product-gallery-network -e PRODUCT_GALLERY_DB_URL=${PRODUCT_GALLERY_DB_URL} -e PORT=${PORT} --name product-gallery-manager "jmgorduez/product-gallery-manager:${TAG}"
       
     - name: Slack Notification
       uses: sonots/slack-notice-action@v3
