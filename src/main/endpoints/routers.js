@@ -1,6 +1,6 @@
 import express from 'express'
 const productGalleryService = require('../services/product-gallery-service')()
-const productGalleryController = require('../endpoints/product-gallery-controller')(productGalleryService)
+const productGalleryController = require('./product-gallery-controller')(productGalleryService)
 
 const router = express.Router();
 

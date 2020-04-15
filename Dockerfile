@@ -8,7 +8,7 @@ COPY package*.json ./
 RUN npm install
 
 # Bundle app source
-COPY src src/
+COPY src/main src/main
 RUN npm run build
 RUN rm -R src/
 
