@@ -67,7 +67,7 @@ jobs:
         remote: database-update/
         host: ${{ secrets.AWS_SERVER_QA }}
         username: ${{ secrets.AWS_USER_QA }}
-        privateKey: ${{ secrets.EC2 }}
+        privateKey: ${{ secrets.AWS_PRIVATE_KEY }}
 
     - name: Run database update scripts
       uses: appleboy/ssh-action@master
@@ -76,7 +76,7 @@ jobs:
       with:
         host: ${{ secrets.AWS_SERVER_QA }}
         username: ${{ secrets.AWS_USER_QA }}
-        key: ${{ secrets.EC2 }}
+        key: ${{ secrets.AWS_PRIVATE_KEY }}
         port: 22
         envs: PRODUCT_GALLERY_DB_URL
         script: | 
@@ -101,7 +101,7 @@ jobs:
       with:
         host: ${{ secrets.AWS_SERVER_QA }}
         username: ${{ secrets.AWS_USER_QA }}
-        key: ${{ secrets.EC2 }}
+        key: ${{ secrets.AWS_PRIVATE_KEY }}
         port: 22
         envs: TAG,PRODUCT_GALLERY_DB_URL
         script: | 
