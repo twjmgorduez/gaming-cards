@@ -1,4 +1,4 @@
-import { Card } from "../../../src/dataaccess/entities/card"
+import { Card } from "../../../main/dataaccess/entities/card"
 
 export const insertCards = (done) => {
 

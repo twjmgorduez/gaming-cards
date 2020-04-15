@@ -1,4 +1,4 @@
-import app from '../../src/index'
+import app from '../../main/index'
 import supertest from 'supertest'
 import { insertCards, clearCardsColletion } from "./database-scripts/cards-collention";
 const should = require("chai").should()
