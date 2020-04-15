@@ -5,8 +5,8 @@ const app = express();
 
 app.use(router)
 
-app.listen(8080, () => {
-    console.log("Server running on port 8080");
+app.listen(process.env.PORT, () => {
+    console.log(`Server running on port ${process.env.PORT}`);
 });
 
 export default app

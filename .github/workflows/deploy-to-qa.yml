@@ -38,8 +38,7 @@ jobs:
 
     - name: Code review  
       run: |
-        npm run eslint-src
-        npm run eslint-tests  
+        npm run eslint
 
     - name: Running unit tests  
       run: |
@@ -50,6 +49,7 @@ jobs:
         npm run it    
       env:
         PRODUCT_GALLERY_DB_URL: ${{ secrets.PRODUCT_GALLERY_DB_URL_IT }}
+        PORT: 8080
 
   deploy_to_QA:
     name: Upload to AWS QA enviroment
@@ -98,16 +98,17 @@ jobs:
       env: 
         TAG: ${{ github.sha }}
         PRODUCT_GALLERY_DB_URL: ${{ secrets.PRODUCT_GALLERY_DB_URL }}
+        PORT: 8080
       with:
         host: ${{ secrets.AWS_SERVER_QA }}
         username: ${{ secrets.AWS_USER_QA }}
         key: ${{ secrets.EC2 }}
         port: 22
-        envs: TAG,PRODUCT_GALLERY_DB_URL
+        envs: TAG,PRODUCT_GALLERY_DB_URL,PORT
         script: | 
           docker rm -f -v product-gallery-manager
           docker rmi -f $(sudo docker images 'jmgorduez/product-gallery-manager' -q)
-          docker run -d -p 8080:8080 --network product-gallery-network -e PRODUCT_GALLERY_DB_URL=${PRODUCT_GALLERY_DB_URL} --name product-gallery-manager "jmgorduez/product-gallery-manager:${TAG}"
+          docker run -d -p ${PORT}:${PORT} --network product-gallery-network -e PRODUCT_GALLERY_DB_URL=${PRODUCT_GALLERY_DB_URL} --name product-gallery-manager "jmgorduez/product-gallery-manager:${TAG}"
       
     - name: Slack Notification
       uses: sonots/slack-notice-action@v3

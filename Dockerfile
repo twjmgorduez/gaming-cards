@@ -12,5 +12,4 @@ COPY src src/
 RUN npm run build
 RUN rm -R src/
 
-EXPOSE 8080
 CMD [ "npm", "run", "serve" ] 
