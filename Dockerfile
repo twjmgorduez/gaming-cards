@@ -6,10 +6,11 @@ WORKDIR /usr/src/app
 # Install app dependencies
 COPY package*.json ./
 RUN npm install
-RUN npm run build
 
 # Bundle app source
-COPY dist dist/
+COPY src src/
+RUN npm run build
+RUN rm -R src/
 
 EXPOSE 8080
 CMD [ "npm", "run", "serve" ] 
