@@ -6,10 +6,10 @@ WORKDIR /usr/src/app
 # Install app dependencies
 COPY package*.json ./
 RUN npm install
+RUN npm run build
 
 # Bundle app source
-COPY .babelrc ./
-COPY src src/
+COPY dist dist/
 
 EXPOSE 8080
-CMD [ "npm", "start" ] 
+CMD [ "npm", "run", "serve" ] 

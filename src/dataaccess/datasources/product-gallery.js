@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+import dotenv from "dotenv";
+dotenv.config({ silent: process.env.NODE_ENV === 'production' });
 
 //"mongodb://<dbuser>:<dbpassword>@ds250607.mlab.com:38485/test-db"
 const PRODUCT_GALLERY_DB_URL = process.env.PRODUCT_GALLERY_DB_URL

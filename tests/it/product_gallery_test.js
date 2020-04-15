@@ -1,6 +1,5 @@
 import app from '../../src/index'
 import supertest from 'supertest'
-import { Card } from "../../src/dataaccess/entities/card"
 import { insertCards, clearCardsColletion } from "./database-scripts/cards-collention";
 const should = require("chai").should()
 

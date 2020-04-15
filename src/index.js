@@ -1,5 +1,5 @@
 import express from 'express'
-import router from '../src/endpoints/routers.js'
+import router from './endpoints/routers.js'
 
 const app = express();
 

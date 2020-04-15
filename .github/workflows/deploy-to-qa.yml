@@ -112,7 +112,7 @@ jobs:
       
     - name: Slack Notification
       uses: sonots/slack-notice-action@v3
-      with:
+      with:AWS0.
         status: ${{ job.status }}
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}

@@ -4,8 +4,10 @@
   "description": "Back-end Gaming cards",
   "main": "index.js",
   "scripts": {
-    "build": "babel ./src -d ./dist --source-maps",
-    "serve": "NODE_ENV=production node dist/index.js",
+    "transpile": "babel ./src -d --out-dir ./dist",
+    "clean": "rimraf dist",
+    "build": "npm-run-all clean transpile",
+    "serve": "NODE_ENV=production node ./dist/index.js",
     "start": "NODE_ENV=development babel-node src/index.js",
     "dev": "DEBUG=server:debug NODE_ENV=development nodemon --exec babel-node src/index.js",
     "test": "DEBUG=server:debug NODE_ENV=test nyc mocha --require @babel/register --reporter spec --exit   tests/unit/* --exec babel-node",
@@ -13,14 +15,19 @@
     "test:watch": "DEBUG=server:debug NODE_ENV=test mocha  --require @babel/register --watch --reporter  spec   tests/ --exec babel-node",
     "eslint-src": "eslint src/**/*.js --ignore-pattern \"node_modules/\"",
     "eslint-tests": "eslint tests/**/*.js --ignore-pattern \"node_modules/\"",
+    "eslint": "npm-run-all eslint-src eslint-tests",
     "validate": "npm ls",
     "lint": "jshint ."
   },
   "pre-commit": [
-    "eslint-src",
-    "eslint-tests",
+    "eslint",
     "test"
   ],
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/twjmgorduez/gaming-cards.git"
@@ -77,8 +84,10 @@
     }
   },
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.16.4",
     "mongoose": "^5.9.7",
+    "npm-run-all": "^4.1.5",
     "precommit-hook": "^3.0.0"
   }
 }
